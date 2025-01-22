@@ -29,7 +29,7 @@ requirements:
     - mypy
     - nbclassic >=0.2.8
     - nest-asyncio
-    - pyccolo >=0.0.27
+    - pyccolo ==0.0.27
     - python >={{ python_min }}
     - traitlets
 
