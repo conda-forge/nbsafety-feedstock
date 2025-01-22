@@ -6,18 +6,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nbsafety-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nbsafety-{{ version }}.tar.gz
   sha256: 4203067e5a5adf6601c60030185e442623478813bbbfbe6b6f61daeee76da2b3
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - astunparse
     - black
@@ -29,10 +29,12 @@ requirements:
     - nbclassic >=0.2.8
     - nest-asyncio
     - pyccolo >=0.0.27
-    - python >=3.6
+    - python >={{ python_min }}
     - traitlets
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - nbsafety
 
